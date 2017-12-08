@@ -32,10 +32,10 @@ open class ParallaxImageView: UIImageView, ParallaxableView {
     }
     
     private func setupShadow() {
-        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowColor = UIColor(red: 100/255, green: 65/255, blue: 164/255, alpha: 0.55).cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: 1)
         self.layer.shadowOpacity = 0
-        self.layer.shadowRadius = 10.0
+        self.layer.shadowRadius = 12.5
         self.clipsToBounds = false
     }
     
