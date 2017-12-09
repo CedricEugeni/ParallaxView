@@ -5,10 +5,8 @@
 //  Created by Cédric Eugeni on 08/12/2017.
 //  Copyright © 2017 Twitchy. All rights reserved.
 //
-
 import UIKit
 import ParallaxView
-
 open class ParallaxImageView: UIImageView, ParallaxableView {
     // MARK: Properties
     open var parallaxEffectOptions = ParallaxEffectOptions()
@@ -34,7 +32,7 @@ open class ParallaxImageView: UIImageView, ParallaxableView {
     private func setupShadow() {
         self.layer.shadowColor = UIColor(red: 100/255, green: 65/255, blue: 164/255, alpha: 0.55).cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: 1)
-        self.layer.shadowOpacity = 0
+        self.layer.shadowOpacity = 1
         self.layer.shadowRadius = 12.5
         self.clipsToBounds = false
     }
@@ -49,15 +47,23 @@ open class ParallaxImageView: UIImageView, ParallaxableView {
         parallaxViewActions.setupFocusedState = { [weak self] (view) in
             guard let _self = self else { return }
             
-            view.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
-            view.layer.shadowOpacity = 1
+            view.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
+            
+            view.layer.shadowColor = UIColor(red: 100/255, green: 65/255, blue: 164/255, alpha: 0.35).cgColor
+            view.layer.shadowOffset = CGSize(width: 0, height: 15)
+            view.layer.shadowRadius = 30
+            view.clipsToBounds = false
         }
         
         parallaxViewActions.setupUnfocusedState = { [weak self] (view) in
             guard let _ = self else { return }
             
             view.transform = CGAffineTransform.identity
-            view.layer.shadowOpacity = 0
+            
+            view.layer.shadowColor = UIColor(red: 100/255, green: 65/255, blue: 164/255, alpha: 0.4).cgColor
+            view.layer.shadowOffset = CGSize(width: 0, height: 3)
+            view.layer.shadowRadius = 6
+            view.clipsToBounds = false
         }
     }
     
